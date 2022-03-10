@@ -1,10 +1,11 @@
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
+ const nextConfig = {
+  reactStrictMode: true,
   images: {
-    loader: "default",
-    domains: ["localhost"],
+    loader: "cloudinary",
+    path: `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME || "blogstrapinext" }`,
   },
 }
 

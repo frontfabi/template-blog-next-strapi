@@ -1,13 +1,24 @@
+import { useState, useEffect } from 'react'
 import Articles from "../../components/articles"
 import { fetchAPI } from "../../lib/api"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
 const Category = ({ category, categories }) => {
+  const [component, setComponent] = useState({})
   const seo = {
     metaTitle: category.attributes.name,
     metaDescription: `All ${category.attributes.name} articles`,
   }
+
+  const  handleRefresh = () => {
+    // by calling this method react re-renders the component
+    setComponent({})
+  };
+
+  useEffect(() => {
+    setComponent([])
+  }, [])
 
   return (
     <Layout categories={categories.data}>

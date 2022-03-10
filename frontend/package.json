@@ -5,13 +5,15 @@
   "scripts": {
     "develop": "next dev",
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn lint:fix && next build",
     "start": "next start",
     "deploy": "next build && next export",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.1.0",
+    "@cloudinary/url-gen": "^1.6.0",
     "moment": "^2.24.0",
     "next": "^11.0.0",
     "qs": "^6.10.1",
@@ -22,6 +24,10 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",

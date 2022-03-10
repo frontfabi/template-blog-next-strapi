@@ -1,23 +1,19 @@
-import { getStrapiMedia } from "../lib/media"
-import NextImage from "next/image"
+import {AdvancedImage} from '@cloudinary/react';
+import {Cloudinary} from "@cloudinary/url-gen";
 
 const Image = ({ image, style }) => {
-  const { url, alternativeText, width, height } = image.data.attributes
+  const { provider_metadata } = image.data.attributes
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: process.env.CLOUDINARY_NAME || 'blogstrapinext'
+    }
+  }); 
+  
+  const myImage = cld.image(provider_metadata.public_id);
 
-  // const loader = () => {
-  //   return getStrapiMedia(image)
-  // }
-
+  console.log(image, provider_metadata.public_id)
   return (
-    <NextImage
-      // loader={loader}
-      layout="responsive"
-      width={width}
-      height={height}
-      objectFit="contain"
-      src={getStrapiMedia(image)}
-      alt={alternativeText || ""}
-    />
+    <AdvancedImage cldImg={myImage}   />
   )
 }
 

@@ -1,8 +1,8 @@
-import React from "react"
 import Link from "next/link"
 import NextImage from "./image"
 
 const Card = ({ article }) => {
+  console.log('article =>', article)
   return (
     <Link href={`/article/${article.attributes.slug}`}>
       <a className="uk-link-reset">
